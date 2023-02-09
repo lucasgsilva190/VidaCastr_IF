@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "vidacast---novo",
+  "private_key_id": "72497a4c1a96849bac155469b5318fb122f5e8dd",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDe25qDlfDQyAok\nBgIRVrKPirYkEwv+zWJPrMfkwshaAfe1P1pnUchxzq90ks5k6/Y6Ua5yfXwG5Yfv\nxDTRYnLNiNucP1DJ8wglluYpePXUU74PlFNpkJsoA5SXbE/IV244TvnI4qJmTL4F\nE0TwBA5h226UKU2YOV1x7K5/qupk/GVp3R9uSCebgCD5/QeLfu81BAr5UIR+k3qn\nWIQmr4JMRpogI97zU02FTgFzPIQT1ds/SmZd1ixhIM7KTaPKE2d25vIDL/6LAUY9\ndSNBAx4RcmfFYtCurg4Nn+pLm4K7L7TOj2TMstBEVoYaR+PhgsvdBU5ubQfKnbYZ\n7VMTCOlNAgMBAAECggEAEzDO8/DX/WqUcPixeePA2ZqEx8N6H3V5N0o2Jm1dil6s\nAYgUlVwWCjLVqhCwREGLgQciogpLQV7Hn26Ca9tx7mAQJTrQjqtmcrI1XLHlXWTe\ns4G+0xLYQZBZXda+Yg6hV6j5WoKloHCQVmiL4a0/vc6DDbAm1epusQ5EEotZxttK\nCciqNrzKd+CQGrdJnBOx2USpldAK+y+n2HOmmCZunsuzhZsaGtETts6d5aHPESoG\nSNMWhYPTYq0iVkI+YXoBEtjpxQdTjWOBVZ88KqwjmwNnhMXpsMh2A5o14oI2HvkY\nSwAMd3BuAB5B9n6fJKhl83oXy+WJzYJy9hfOSpNj8QKBgQD2tTEX5qZSUPLmmDML\nWX8h9zT7k2lc11HrrJdwn7vn6S/YYtKed2UPH+8hFQin+4kCTfFP+5KuHjLmsxDT\nV0jxYJ2RNpQUf9wlH7IUM4XIKoNNvkkg+jcexFcbIs+olr4hRF5QOGn3GKiNJLoz\nZGXavhZD+ziKKktVTZtPFy1upQKBgQDnQHIOloiI2UgTG8zrPHD7q8nOCFxhI6Hc\nRXcoLQU2ww9kzTvarEc4QTPALCLodQ+oEnfN76nm+rZWcEG0/pQu91+CakKR/H2T\nMhqGsu7uj4s2mQKTex7IdB5Z3b2aQ7Avt3KKBZSmnNK8EnH3juSev87MfHGVjXCX\nKZhU8AJ3iQKBgG0lKD0Mu9R7H5tJBnwk8gvS1EvgoaKDWCjNyIn5ASbOkW5H+ipF\nZB5W4HJgXd4DeE/er73U7MW/coGCAxWc7hZrygnufYC8OGbsKNqrGKq/tCt23d+L\nE0u3TVoiAoDxf9gz6Q3Qh4DcFeWrs/z8k9s8cZlN0Wu+3mk01lsdQ+pJAoGAVtIG\nQF3Z4u8YtTvhwouNq59Cg9z1ue6jzUwzQV0tsPKo6+J1z1KQ5pjsMgEgFgAlIafV\nXPbW5gZIwMkiki5mOf/b1t3IIoEWMFZGST4SoHQ6AwSNSAuYcg/OeVTb43f4ROHt\n2c3gknEcWUnfid8XDFbc8D7kcg6JL+eI7pKximkCgYAYppja/1Wb3aZxFoMnK1MN\nzuxAErK0VwPMHqh8tRhmdwk+mOgVu54zQMSP5/AUW9by7rhxMHGx/d4GnvW9GjN2\nENf2dF0APmT1CwXVO3u6sklc4ogZvGYQI2wS9lQs5ouitGv6lytc66gDxwDcBQwJ\nTSu9hFN/GCgyw462eskj9Q==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-5jd91@vidacast---novo.iam.gserviceaccount.com",
+  "client_id": "112418058449804191436",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-5jd91%40vidacast---novo.iam.gserviceaccount.com"
+}

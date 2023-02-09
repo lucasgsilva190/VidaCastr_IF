@@ -86,6 +86,21 @@
         filter: brightness(0.7);
       }
     }
+
+    .editButton {
+      background: var(--green-500);
+      border: 0;
+      color: var(--white);
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.875rem;
+      transition: filter 0.2s;
+      margin-left: 8px;
+
+      &:hover {
+        filter: brightness(0.7);
+      }
+    }
   }
 
   .description {

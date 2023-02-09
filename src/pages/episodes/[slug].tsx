@@ -1,14 +1,15 @@
 import { format, parseISO } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import { api } from "../../services/api";
 import { convertDurationToTimesString } from "../../utils/convertDurationToTimeString";
 import styles from "./episode.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { usePlayer } from "../../components/contexts/PlayerContext";
 import { useAuth } from "../../components/contexts/AuthContext";
+import { deleteEpisode, fetchEpisodeById } from "../../services/firebase";
+import { pageAuthRequired } from "../../utils/SSR";
 
 type Episode = {
   id: string;
@@ -28,16 +29,18 @@ type EpisodeProps = {
 
 export default function Episode({ episode }: EpisodeProps) {
   const { play } = usePlayer();
-  const { isSuperAdmin } = useAuth();
+  const { isAdmin } = useAuth();
   const router = useRouter();
 
   const handleDelete = async () => {
     if (!confirm("Você tem certeza que deseja excluir este episódio?")) return;
 
-    await api.delete(`/episodes/${episode.id}`);
+    await deleteEpisode(episode.id);
 
     router.push("/");
   };
+
+  const handleEdit = () => router.push(`/episodes/edit/${episode.id}`);
 
   return (
     <div className={styles.episode}>
@@ -64,10 +67,13 @@ export default function Episode({ episode }: EpisodeProps) {
         <span>{episode.publishedAt}</span>
         <span>{episode.durationAsString}</span>
 
-        {isSuperAdmin && (
+        {isAdmin && (
           <div>
             <button onClick={handleDelete} className={styles.deleteButton}>
               Excluir episódio
+            </button>
+            <button onClick={handleEdit} className={styles.editButton}>
+              Editar episódio
             </button>
           </div>
         )}
@@ -81,52 +87,40 @@ export default function Episode({ episode }: EpisodeProps) {
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  const { data } = await api.get("episodes", {
-    params: {
-      _limit: 2,
-      _sort: "published_at",
-      _order: "desc",
-    },
-  });
+export const getServerSideProps: GetServerSideProps = pageAuthRequired(
+  async (ctx) => {
+    try {
+      const { slug } = ctx.params;
 
-  const paths = data.map((episode) => {
-    return {
-      params: {
-        slug: episode.id,
-      },
-    };
-  });
+      const data = await fetchEpisodeById(slug as string);
 
-  return {
-    paths,
-    fallback: `blocking`,
-  };
-};
+      const episode = {
+        id: data.id,
+        title: data.title,
+        thumbnail: data.thumbnail,
+        members: data.members,
+        publishedAt: format(parseISO(data.published_at), "d MMM yy", {
+          locale: ptBR,
+        }),
+        duration: Number(data.file.duration),
+        durationAsString: convertDurationToTimesString(
+          Number(data.file.duration)
+        ),
+        description: data.description,
+        url: data.file.url,
+      };
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
-  const { slug } = ctx.params;
-
-  const { data } = await api.get(`/episodes/${slug}`);
-
-  const episode = {
-    id: data.id,
-    title: data.title,
-    thumbnail: data.thumbnail,
-    members: data.members,
-    publishedAt: format(parseISO(data.published_at), "d MMM yy", {
-      locale: ptBR,
-    }),
-    duration: Number(data.file.duration),
-    durationAsString: convertDurationToTimesString(Number(data.file.duration)),
-    description: data.description,
-    url: data.file.url,
-  };
-
-  return {
-    props: {
-      episode,
-    },
-    revalidate: 60 * 60 * 24,
-  };
-};
+      return {
+        props: {
+          episode,
+        },
+      };
+    } catch (error) {
+      if (error === "Episódio não encontrado") {
+        return {
+          notFound: true,
+        };
+      }
+    }
+  }
+);
